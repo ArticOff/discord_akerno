@@ -10,6 +10,7 @@
             ],
             "command": {
                 "arguments": [
+                    "bot",
                     "message"
                 ],
                 "function": "_ban"
@@ -25,6 +26,7 @@
             ],
             "command": {
                 "arguments": [
+                    "bot",
                     "message"
                 ],
                 "function": "_kick"
@@ -42,6 +44,7 @@
             ],
             "command": {
                 "arguments": [
+                    "bot",
                     "message"
                 ],
                 "function": "_help"
@@ -57,9 +60,45 @@
             ],
             "command": {
                 "arguments": [
+                    "bot",
                     "message"
                 ],
                 "function": "_say"
+            }
+        },
+        {
+            "filename": "botinfo",
+            "name": "botinfo",
+            "category": "utility",
+            "description": "Les informations du bot",
+            "aliases": [
+                "botinfo",
+                "bot.info"
+            ],
+            "command": {
+                "arguments": [
+                    "bot",
+                    "message"
+                ],
+                "function": "_botinfo"
+            }
+        },
+        {
+            "filename": "ping",
+            "name": "ping",
+            "category": "utility",
+            "description": "Le ping du bot",
+            "aliases": [
+                "ping",
+                "ms",
+                "latency"
+            ],
+            "command": {
+                "arguments": [
+                    "bot",
+                    "message"
+                ],
+                "function": "_ping"
             }
         }
     ],
@@ -74,6 +113,7 @@
             ],
             "command": {
                 "arguments": [
+                    "bot",
                     "message"
                 ],
                 "function": "_dm"
@@ -83,12 +123,14 @@
             "filename": "coucou",
             "name": "coucou",
             "category": "fun",
-            "description": "Coucou!",
+            "description": "hey",
             "aliases": [
-                "salut"
+                "salut",
+                "hey"
             ],
             "command": {
                 "arguments": [
+                    "bot",
                     "message"
                 ],
                 "function": "_coucou"
