@@ -4,7 +4,7 @@ from discord.ext import commands
 from importlib import machinery
 discord_akerno = machinery.SourceFileLoader('discord_akerno','discord_akerno.py').load_module()
 
-async def _botinfo(bot: commands.Bot ,message: discord_akerno.ext.Message):
+async def _botinfo(bot: commands.Bot, message: discord_akerno.ext.Message):
     await message.delete()
     embed = discord.Embed(title="Bot Info", description="The open source bot", color=discord.Color.green())
     embed.add_field(name="Name", value=f'`{bot.user.name}`', inline=True)
