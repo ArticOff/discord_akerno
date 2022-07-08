@@ -1,5 +1,5 @@
 # On importe les modules
-import inspect, typing, discord, json, os
+import inspect, typing, discord, json, os, sys
 from discord.ext import commands as _commands
 
 # On définit les variables d'auteur, de version et de description
@@ -181,3 +181,10 @@ class Discord_kairo(_commands.Cog):
                 for cmd in self.commands[_class_]:
                     if str(str(message.content).split()[0]).removeprefix("!") in cmd["aliases"] or str(str(message.content).split()[0]).replace(self.bot.command_prefix, '_') == f'_{cmd["name"]}':
                         return await eval("_{cmd}(self.bot, message)".format(cmd=str(cmd["name"]).removesuffix('\n')))
+    
+    @_commands.Cog.listener()
+    async def on_command_error(self, ctx: _commands.Context, error: _commands.CommandError):
+        """
+        Pour éviter les spams dans la console, on utilise l'event on_command_error de discord.py.
+        """
+        return
