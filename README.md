@@ -8,6 +8,7 @@ PyBot
 ├── discord_akerno.py
 └── command
     ├── fun
+    │   ├── coucou.py
     │   └── dm.py
     ├── moderation
     │   ├── ban.py
