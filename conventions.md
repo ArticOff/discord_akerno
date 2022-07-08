@@ -2,12 +2,12 @@
 
 ---
 
-### 1. Utilisez le fichier discord_kairo.create.py.
+### 1. Utilisez le fichier discord_akerno.create.py.
 Ce fichier va configurer la commande, manque qu'à coder.
 
 ---
 
-### 2. Ne modifier en aucun cas discord_kairo.
+### 2. Ne modifier en aucun cas discord_akerno.
 C'est une version encore en développement.
 Si il y a des erreurs, faites une issue
 
