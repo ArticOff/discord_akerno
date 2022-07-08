@@ -90,8 +90,8 @@ class Command(object):
         command_info["command"]["function"] = self.function.__name__
         self.info = command_info
         type_info = self.category
-        with open('kairo.commands.json', 'r+', encoding='utf-8') as file:
-            _class = get_data('kairo.commands.json')
+        with open('akerno.commands.json', 'r+', encoding='utf-8') as file:
+            _class = get_data('akerno.commands.json')
             for name in _class[type_info]:
                 if name["name"] == self.name:
                     return False
@@ -118,14 +118,14 @@ class CreateCommand:
             with open(f'{name}.py', 'x', encoding='utf-8') as fc:
                 code = f"""
 from importlib import machinery
-discord_kairo = machinery.SourceFileLoader('discord_kairo','discord_kairo.py').load_module()
+discord_akerno = machinery.SourceFileLoader('discord_akerno','discord_akerno.py').load_module()
 
-async def _{name}(bot ,message: discord_kairo.ext.Message):
+async def _{name}(bot ,message: discord_akerno.ext.Message):
     # écrit ton code ici !
     await message.reply('Coucou ! :wave:')
 
 if __name__ == '__main__':
-    {name} = discord_kairo.Command
+    {name} = discord_akerno.Command
     {name}.constructor({name}, "{name}", "{category}", "{description}", {aliases})
     {name}.execute({name}, _{name})
     {name}.Push({name})
@@ -139,19 +139,19 @@ if __name__ == '__main__':
             return os.remove(f'{name}.py')
         print(f'Créé ! ({path})')
     
-class Discord_kairo(_commands.Cog):
+class Discord_akerno(_commands.Cog):
     """
-    Le Cog à ajouter au bot pour relier le bot à l'extension Kairo.
+    Le Cog à ajouter au bot pour relier le bot à l'extension akerno.
     """
     def __init__(self, bot: _commands.Bot):
         """
         Ici, on récupère la variable bot.
         """
-        commands = get_data('kairo.commands.json')
+        commands = get_data('akerno.commands.json')
         categories = os.listdir('command')
         self.categories = categories
-        with open('kairo.dir.json', 'r+', encoding='utf-8') as file:
-            dirs = get_data('kairo.dir.json')
+        with open('akerno.dir.json', 'r+', encoding='utf-8') as file:
+            dirs = get_data('akerno.dir.json')
             dirs = {}
             for category in categories:
                 dirs[category] = category
