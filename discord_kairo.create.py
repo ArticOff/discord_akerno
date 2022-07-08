@@ -1,4 +1,4 @@
-from discord_kairo import CreateCommand
+from discord_akerno import CreateCommand
 
 CreateCommand('eval', 'dev', 'éxecuter des commandes', ['exe'])
 
