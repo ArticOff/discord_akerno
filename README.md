@@ -2,10 +2,10 @@
 ```
 PyBot
 ├── bot.py
-├── discord_kairo.create.py
-├── discord_kairo.py
-├── kairo.commands.json
-├── kairo.dirs.json
+├── discord_akerno.create.py
+├── discord_akerno.py
+├── akerno.commands.json
+├── akerno.dirs.json
 └── command
     ├── fun
     │   └── dm.py
