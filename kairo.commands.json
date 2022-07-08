@@ -1,0 +1,98 @@
+{
+    "moderation": [
+        {
+            "filename": "ban",
+            "name": "ban",
+            "category": "moderation",
+            "description": "Ban",
+            "aliases": [
+                "degage"
+            ],
+            "command": {
+                "arguments": [
+                    "message"
+                ],
+                "function": "_ban"
+            }
+        },
+        {
+            "filename": "kick",
+            "name": "kick",
+            "category": "moderation",
+            "description": "Kick",
+            "aliases": [
+                "expulser"
+            ],
+            "command": {
+                "arguments": [
+                    "message"
+                ],
+                "function": "_kick"
+            }
+        }
+    ],
+    "utility": [
+        {
+            "filename": "help",
+            "name": "help",
+            "category": "utility",
+            "description": "The help command",
+            "aliases": [
+                "help"
+            ],
+            "command": {
+                "arguments": [
+                    "message"
+                ],
+                "function": "_help"
+            }
+        },
+        {
+            "filename": "say",
+            "name": "say",
+            "category": "utility",
+            "description": "Say",
+            "aliases": [
+                "dire"
+            ],
+            "command": {
+                "arguments": [
+                    "message"
+                ],
+                "function": "_say"
+            }
+        }
+    ],
+    "fun": [
+        {
+            "filename": "dm",
+            "name": "dm",
+            "category": "fun",
+            "description": "DM",
+            "aliases": [
+                "mp"
+            ],
+            "command": {
+                "arguments": [
+                    "message"
+                ],
+                "function": "_dm"
+            }
+        },
+        {
+            "filename": "coucou",
+            "name": "coucou",
+            "category": "fun",
+            "description": "Coucou!",
+            "aliases": [
+                "salut"
+            ],
+            "command": {
+                "arguments": [
+                    "message"
+                ],
+                "function": "_coucou"
+            }
+        }
+    ]
+}
