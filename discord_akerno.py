@@ -1,5 +1,5 @@
 # On importe les modules
-import inspect, typing, discord, json, os, sys
+import inspect, typing, discord, json, os
 from discord.ext import commands as _commands
 
 # On définit les variables d'auteur, de version et de description
