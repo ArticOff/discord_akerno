@@ -143,26 +143,27 @@ class Discord_kairo(_commands.Cog):
     """
     Le Cog à ajouter au bot pour relier le bot à l'extension Kairo.
     """
-    def __init__(self, bot: _commands.Bot, mod_dir: str, uti_dir: str, fun_dir: str):
+    def __init__(self, bot: _commands.Bot):
         """
         Ici, on récupère la variable bot.
         """
         commands = get_data('kairo.commands.json')
-        self.mod_dir = mod_dir
-        self.uti_dir = uti_dir
-        self.fun_dir = fun_dir
+        categories = os.listdir('command')
+        self.categories = categories
         with open('kairo.dir.json', 'r+', encoding='utf-8') as file:
-            dir = get_data('kairo.dir.json')
-            dir["moderation"] = self.mod_dir
-            dir["utility"] = self.uti_dir
-            dir["fun"] = self.fun_dir
-            file.write(json.dumps(dir, indent=4, separators=(',',': '), ensure_ascii=False))
+            dirs = get_data('kairo.dir.json')
+            dirs = {}
+            for category in categories:
+                dirs[category] = category
+                file.seek(0)
+            json.dump(dirs, file, indent=4, separators=(',',': '), ensure_ascii=False)
+        file.close()
+        for category in categories:
+            if category not in commands:
+                commands[category] = []
         file.close()
         self.bot = bot
         self.commands = commands
-        self.commands_moderation = commands["moderation"]
-        self.commands_utility = commands["utility"]
-        self.commands_fun = commands["fun"]
 
     @_commands.Cog.listener()
     async def on_message(self, message: discord.Message):
@@ -176,12 +177,7 @@ class Discord_kairo(_commands.Cog):
                 for file in os.listdir(f"./command/{categories}"):
                     if file.endswith(".py"):
                         exec(f"from command.{categories}.{file.removesuffix('.py')} import _{file.removesuffix('.py')}")
-            for cmd in self.commands_utility:
-                if str(str(message.content).split()[0]).removeprefix("!") in cmd["aliases"] or str(str(message.content).split()[0]).replace(self.bot.command_prefix, '_') == f'_{cmd["name"]}':
-                    return await eval("_{cmd}(self.bot, message)".format(cmd=str(cmd["name"]).removesuffix('\n')))
-            for cmd in self.commands_moderation:
-                if str(str(message.content).split()[0]).removeprefix("!") in cmd["aliases"] or str(str(message.content).split()[0]).replace(self.bot.command_prefix, '_') == f'_{cmd["name"]}':
-                    return await eval("_{cmd}(self.bot, message)".format(cmd=str(cmd["name"]).removesuffix('\n')))
-            for cmd in self.commands_fun:
-                if str(str(message.content).split()[0]).removeprefix("!") in cmd["aliases"] or str(str(message.content).split()[0]).replace(self.bot.command_prefix, '_') == f'_{cmd["name"]}':
-                    return await eval("_{cmd}(self.bot, message)".format(cmd=str(cmd["name"]).removesuffix('\n')))
+            for _class_ in self.commands:
+                for cmd in self.commands[_class_]:
+                    if str(str(message.content).split()[0]).removeprefix("!") in cmd["aliases"] or str(str(message.content).split()[0]).replace(self.bot.command_prefix, '_') == f'_{cmd["name"]}':
+                        return await eval("_{cmd}(self.bot, message)".format(cmd=str(cmd["name"]).removesuffix('\n')))
