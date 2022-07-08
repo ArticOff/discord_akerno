@@ -1,11 +1,11 @@
-# discord_kairo
+# discord_akerno
 ```
 PyBot
+├── akerno.commands.json
+├── akerno.dirs.json
 ├── bot.py
 ├── discord_akerno.create.py
 ├── discord_akerno.py
-├── akerno.commands.json
-├── akerno.dirs.json
 └── command
     ├── fun
     │   └── dm.py
