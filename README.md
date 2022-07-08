@@ -13,6 +13,7 @@ PyBot
     │   ├── ban.py
     │   └── kick.py
     └── utility
+        ├── botinfo.py
         ├── coucou.py
         ├── help.py
         └── say.py
