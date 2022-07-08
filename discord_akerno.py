@@ -32,6 +32,7 @@ class ext:
     GroupChannel = discord.GroupChannel
     GroupCall = discord.GroupCall
     DMChannel = discord.DMChannel
+    CategoryChannel = discord.CategoryChannel          
 
 class Command(object):
     """
@@ -137,8 +138,8 @@ if __name__ == '__main__':
         except FileExistsError:
             print(f'Cette commande existe déjà ! ({os.path.dirname(os.path.abspath(__file__))}\{category}\{name}.py)')
             return os.remove(f'{name}.py')
-        print(f'Créé ! ({path})')
-    
+        print(f'Créé ! ({path})') 
+
 class Discord_akerno(_commands.Cog):
     """
     Le Cog à ajouter au bot pour relier le bot à l'extension akerno.
@@ -165,6 +166,19 @@ class Discord_akerno(_commands.Cog):
         self.bot = bot
         self.commands = commands
 
+    @_commands.Cog.listener()
+    async def on_ready(self):
+        for categories in os.listdir("./command"):
+            for file in os.listdir(f"./command/{categories}"):
+                if file.endswith(".py"):
+                    cmd_ = []
+                    for command in self.commands[categories]:
+                        cmd_.append(command["name"])
+                    if file.replace(".py", "") in cmd_:
+                        pass
+                    else:
+                        return print(f'{file} n\'a pas été trouvé dans la base de donnée !')
+                    
     @_commands.Cog.listener()
     async def on_message(self, message: discord.Message):
         """
