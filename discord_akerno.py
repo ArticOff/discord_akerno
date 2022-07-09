@@ -4,7 +4,7 @@ from discord.ext import commands as _commands
 
 # On définit les variables d'auteur, de version et de description
 __author__ = "Artic"
-__version__ = "1.1.0"
+__version__ = "1.2.0"
 __description__ = "En hommage à discord_akairo de discord.js, c'est un module qui fonctionne de la même façon."
 
 def get_data(path: str):
@@ -95,6 +95,7 @@ class Command(object):
             _class = get_data('akerno.commands.json')
             for name in _class[type_info]:
                 if name["name"] == self.name:
+                    print(f'La commande {self.name} se trouve déjà dans la base de donnée !')
                     return False
             _class[type_info].append(command_info)
             file.seek(0)
@@ -161,7 +162,7 @@ class Discord_akerno(_commands.Cog):
         file.close()
         for category in categories:
             if category not in commands:
-                commands[category] = []
+                commands[category] = [] 
         file.close()
         self.bot = bot
         self.commands = commands
