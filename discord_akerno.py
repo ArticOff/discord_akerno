@@ -240,6 +240,16 @@ class Discord_akerno(_commands.Cog):
         """
         if message.author.bot:
             return
+        with open('akerno.inhibitors.json', 'r+', encoding='utf-8') as file:
+            inhibitors = get_data('akerno.inhibitors.json')
+            if message.author.id in inhibitors["user"]:
+                return
+            if message.guild.id in inhibitors["guild"]:
+                return
+            for word in inhibitors["word"]:
+                if word in message.content.lower():
+                    return
+        file.close()
         if str(message.content).startswith(self.bot.command_prefix):
             for categories in os.listdir("./command"):
                 for file in os.listdir(f"./command/{categories}"):
