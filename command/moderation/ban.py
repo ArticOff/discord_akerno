@@ -8,6 +8,6 @@ async def _ban(bot, message: discord_akerno.ext.Message):
 
 if __name__ == '__main__':
     ban = discord_akerno.Command
-    ban.constructor(ban, 'ban', 'moderation', 'Ban', ['degage'])
+    ban.constructor(ban, 'ban', 'moderation', 'Ban', ['degage'], discord_akerno.ext.Permission.bannir_des_membres, discord_akerno.ext.Permission.bannir_des_membres)
     ban.execute(ban, _ban)
     ban.Push(ban)
