@@ -4,7 +4,7 @@ from discord.ext import commands as _commands
 
 # On définit les variables d'auteur, de version et de description
 __author__ = "Artic"
-__version__ = "1.3.0"
+__version__ = "1.4.0"
 __description__ = "En hommage à discord_akairo de discord.js, c'est un module qui fonctionne de la même façon."
 
 def get_data(path: str):
@@ -245,6 +245,8 @@ class Discord_akerno(_commands.Cog):
             if message.author.id in inhibitors["user"]:
                 return
             if message.guild.id in inhibitors["guild"]:
+                return
+            if message.channel.id in inhibitors["channel"]:
                 return
             for word in inhibitors["word"]:
                 if word in message.content.lower():
