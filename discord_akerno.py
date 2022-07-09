@@ -181,7 +181,7 @@ async def _{name}(bot, message: discord_akerno.ext.Message):
 
 if __name__ == '__main__':
     {name} = discord_akerno.Command
-    {name}.constructor({name}, "{name}", "{category}", "{description}", {aliases}, discord_akerno.ext.{permissionUser}, discord_akerno.ext.{permissionBot})
+    {name}.constructor({name}, "{name}", "{category}", "{description}", {aliases}, {f'discord_akerno.ext.{permissionUser}' if permissionUser else None}, {f'discord_akerno.ext.{permissionBot}' if permissionBot else None})
     {name}.execute({name}, _{name})
     {name}.Push({name})
 """
