@@ -1,6 +1,26 @@
 {
     "moderation": [
         {
+            "filename": "clear",
+            "name": "clear",
+            "category": "moderation",
+            "description": "efface des messages",
+            "aliases": [
+                "clear"
+            ],
+            "command": {
+                "arguments": [
+                    "bot",
+                    "message"
+                ],
+                "function": "_clear"
+            },
+            "permission": {
+                "bot": "manage_messages",
+                "user": "manage_messages"
+            }
+        },
+        {
             "filename": "ban",
             "name": "ban",
             "category": "moderation",
@@ -14,6 +34,10 @@
                     "message"
                 ],
                 "function": "_ban"
+            },
+            "permission": {
+                "bot": "ban_members",
+                "user": "ban_members"
             }
         },
         {
@@ -30,42 +54,14 @@
                     "message"
                 ],
                 "function": "_kick"
+            },
+            "permission": {
+                "bot": "kick_members",
+                "user": "kick_members"
             }
         }
     ],
     "utility": [
-        {
-            "filename": "help",
-            "name": "help",
-            "category": "utility",
-            "description": "The help command",
-            "aliases": [
-                "help"
-            ],
-            "command": {
-                "arguments": [
-                    "bot",
-                    "message"
-                ],
-                "function": "_help"
-            }
-        },
-        {
-            "filename": "say",
-            "name": "say",
-            "category": "utility",
-            "description": "Say",
-            "aliases": [
-                "dire"
-            ],
-            "command": {
-                "arguments": [
-                    "bot",
-                    "message"
-                ],
-                "function": "_say"
-            }
-        },
         {
             "filename": "botinfo",
             "name": "botinfo",
@@ -81,6 +77,30 @@
                     "message"
                 ],
                 "function": "_botinfo"
+            },
+            "permission": {
+                "bot": null,
+                "user": null
+            }
+        },
+        {
+            "filename": "help",
+            "name": "help",
+            "category": "utility",
+            "description": "The help command",
+            "aliases": [
+                "help"
+            ],
+            "command": {
+                "arguments": [
+                    "bot",
+                    "message"
+                ],
+                "function": "_help"
+            },
+            "permission": {
+                "bot": null,
+                "user": null
             }
         },
         {
@@ -99,26 +119,34 @@
                     "message"
                 ],
                 "function": "_ping"
+            },
+            "permission": {
+                "bot": null,
+                "user": null
             }
-        }
-    ],
-    "fun": [
+        },
         {
-            "filename": "dm",
-            "name": "dm",
-            "category": "fun",
-            "description": "DM",
+            "filename": "say",
+            "name": "say",
+            "category": "utility",
+            "description": "Say",
             "aliases": [
-                "mp"
+                "dire"
             ],
             "command": {
                 "arguments": [
                     "bot",
                     "message"
                 ],
-                "function": "_dm"
+                "function": "_say"
+            },
+            "permission": {
+                "bot": null,
+                "user": "manage_messages"
             }
-        },
+        }
+    ],
+    "fun": [
         {
             "filename": "coucou",
             "name": "coucou",
@@ -134,6 +162,30 @@
                     "message"
                 ],
                 "function": "_coucou"
+            },
+            "permission": {
+                "bot": null,
+                "user": null
+            }
+        },
+        {
+            "filename": "dm",
+            "name": "dm",
+            "category": "fun",
+            "description": "DM",
+            "aliases": [
+                "mp"
+            ],
+            "command": {
+                "arguments": [
+                    "bot",
+                    "message"
+                ],
+                "function": "_dm"
+            },
+            "permission": {
+                "bot": null,
+                "user": null
             }
         }
     ]
