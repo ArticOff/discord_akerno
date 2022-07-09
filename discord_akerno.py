@@ -1,5 +1,5 @@
 # On importe les modules
-import inspect, typing, discord, json, os
+import inspect, typing, discord, json, os, asyncio, functools
 from discord.ext import commands as _commands
 
 # On définit les variables d'auteur, de version et de description
@@ -203,3 +203,14 @@ class Discord_akerno(_commands.Cog):
         Pour éviter les spams dans la console, on utilise l'event on_command_error de discord.py.
         """
         return
+
+class AkernoClient:
+    """
+    Cette classe va vous permettre de configurer rapidement votre bot, plus qu'à écrire le code !
+    """
+    def __init__(self, bot: _commands.Bot):
+        self.intents = bot.intents.all()
+        self.prefix = bot.command_prefix
+        self.bot = bot
+        self.akerno = Discord_akerno(self.bot)
+        self.bot.add_cog(self.akerno)
