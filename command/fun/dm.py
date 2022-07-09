@@ -8,6 +8,6 @@ async def _dm(bot, message: discord_akerno.ext.Message):
 
 if __name__ == '__main__':
     dm = discord_akerno.Command
-    dm.constructor(dm, 'dm', 'fun', 'DM', ['mp'])
+    dm.constructor(dm, 'dm', 'fun', 'DM', ['mp'], None, None)
     dm.execute(dm, _dm)
     dm.Push(dm)
