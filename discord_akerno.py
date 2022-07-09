@@ -4,7 +4,7 @@ from discord.ext import commands as _commands
 
 # On définit les variables d'auteur, de version et de description
 __author__ = "Artic"
-__version__ = "1.2.0"
+__version__ = "1.3.0"
 __description__ = "En hommage à discord_akairo de discord.js, c'est un module qui fonctionne de la même façon."
 
 def get_data(path: str):
@@ -32,7 +32,50 @@ class ext:
     GroupChannel = discord.GroupChannel
     GroupCall = discord.GroupCall
     DMChannel = discord.DMChannel
-    CategoryChannel = discord.CategoryChannel          
+    CategoryChannel = discord.CategoryChannel
+
+    class Permission:
+        creer_une_invitation = 'create_instant_invite'
+        expulser_des_membres = 'kick_members'
+        bannir_des_membres = 'ban_members'
+        administrateur = 'administrator'
+        gerer_les_salons = 'manage_channels'
+        gerer_le_serveur = 'manage_guild'
+        ajouter_des_reactions = 'add_reactions'
+        voir_les_logs_du_serveur = 'view_audit_log'
+        voix_prioritaire = 'priority_speaker'
+        video = 'stream'
+        voir_les_salons = 'view_channel'
+        envoyer_des_messages = 'send_messages'
+        envoyer_des_messages_de_syntèse_vocale = 'send_tts_messages'
+        gerer_les_messages = 'manage_messages'
+        integrer_des_liens = 'embed_links'
+        joindre_des_fichiers = 'attach_files'
+        voir_les_anciens_messages = 'read_message_history'
+        mentionner_des_membres = 'mention_everyone'
+        utiliser_les_emojis_externes = 'use_external_emojis'
+        utiliser_les_emojis = 'use_emojis'
+        se_connecter = 'connect'
+        parler = 'speak'
+        rendre_les_membres_muets = 'mute_members'
+        mettre_en_sourdine_des_membres = 'deafen_members'
+        deplacer_des_membres = 'move_members'
+        utiliser_la_detection_de_la_voix = 'use_vad'
+        changer_le_pseudo = 'change_nickname'
+        gerer_les_pseudos = 'manage_nicknames'
+        gerer_les_roles = 'manage_roles'
+        gerer_les_webhooks = 'manage_webhooks'
+        gerer_les_emojis_et_les_autocollants = 'manage_emojis_and_stickers'
+        utiliser_les_commandes_de_application = 'use_application_commands'
+        gerer_les_evenements = 'manage_events'
+        gerer_les_fils = 'manage_threads'
+        creer_des_fils_publics = 'create_public_threads'
+        creer_des_fils_privés = 'create_private_threads'
+        utiliser_des_autocollants_externes = 'use_external_stickers'
+        envoyer_des_messages_dans_les_fils = 'send_messages_in_threads'
+        utiliser_les_activites = 'use_embedded_activities'
+        exclure_temporairement_des_membres = 'moderate_members'
+
 
 class Command(object):
     """
@@ -53,7 +96,7 @@ class Command(object):
         description = description
         aliases = aliases
 
-    def constructor(self, name: str, category: str, description: str, aliases: typing.Optional[list[str]]):
+    def constructor(self, name: str, category: str, description: str, aliases: typing.Optional[list[str]], permissionUser: str = None, permissionBot: str = None):
         """
         Cette fonction va contruire la commande.
         """
@@ -62,6 +105,8 @@ class Command(object):
         self.description = description
         self.aliases = aliases
         self.filename = ''.join(os.path.splitext(os.path.basename(inspect.getmodule((inspect.stack()[1])[0]).__file__.removesuffix('.py'))))
+        self.permissionBot = permissionBot.lower() if permissionBot else None
+        self.permissionUser = permissionUser.lower() if permissionUser else None
 
     def execute(self, function: typing.Callable[[], typing.Any]):
         """
@@ -89,6 +134,9 @@ class Command(object):
         command_info["command"] = {}
         command_info["command"]["arguments"] = self.args
         command_info["command"]["function"] = self.function.__name__
+        command_info["permission"] = {}
+        command_info["permission"]["bot"] = self.permissionBot
+        command_info["permission"]["user"] = self.permissionUser
         self.info = command_info
         type_info = self.category
         with open('akerno.commands.json', 'r+', encoding='utf-8') as file:
@@ -122,7 +170,7 @@ class CreateCommand:
 from importlib import machinery
 discord_akerno = machinery.SourceFileLoader('discord_akerno','discord_akerno.py').load_module()
 
-async def _{name}(bot ,message: discord_akerno.ext.Message):
+async def _{name}(bot, message: discord_akerno.ext.Message):
     # écrit ton code ici !
     await message.reply('Coucou ! :wave:')
 
@@ -178,7 +226,7 @@ class Discord_akerno(_commands.Cog):
                     if file.replace(".py", "") in cmd_:
                         pass
                     else:
-                        return print(f'{file} n\'a pas été trouvé dans la base de donnée !')
+                        print(f'{file} n\'a pas été trouvé dans la base de donnée !')
                     
     @_commands.Cog.listener()
     async def on_message(self, message: discord.Message):
@@ -195,8 +243,15 @@ class Discord_akerno(_commands.Cog):
             for _class_ in self.commands:
                 for cmd in self.commands[_class_]:
                     if str(str(message.content).split()[0]).removeprefix("!") in cmd["aliases"] or str(str(message.content).split()[0]).replace(self.bot.command_prefix, '_') == f'_{cmd["name"]}':
-                        return await eval("_{cmd}(self.bot, message)".format(cmd=str(cmd["name"]).removesuffix('\n')))
-    
+                        permissionUser = [perm[0] for perm in message.author.guild_permissions if perm[1]]
+                        if cmd["permission"]["user"] in permissionUser or cmd["permission"]["user"] is None:
+                            try:
+                                return await eval("_{cmd}(self.bot, message)".format(cmd=str(cmd["name"]).removesuffix('\n')))
+                            except discord.Forbidden:
+                                return await message.reply(f'Je n\'ai pas le permission d\'effectuer cette commande !\npermission: `{cmd["permission"]["bot"]}`')
+                        else:
+                            return await message.reply(f'Vous n\'avez pas le permission d\'effectuer cette commande !\npermission: `{cmd["permission"]["user"]}`')
+
     @_commands.Cog.listener()
     async def on_command_error(self, ctx: _commands.Context, error: _commands.CommandError):
         """
