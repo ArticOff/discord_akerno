@@ -35,6 +35,9 @@ class ext:
     CategoryChannel = discord.CategoryChannel
 
     class Permission:
+        """
+        Les vraibles de permission.
+        """
         creer_une_invitation = 'create_instant_invite'
         expulser_des_membres = 'kick_members'
         bannir_des_membres = 'ban_members'
@@ -155,12 +158,14 @@ class CreateCommand:
     """
     Cette classe va vous permettre de configurer rapidement votre commande, plus qu'à écrire le code !
     """
-    def __init__(self, name: str, category: str, description: str, aliases: typing.Optional[list[str]]):
+    def __init__(self, name: str, category: str, description: str, aliases: typing.Optional[list[str]], permissionUser: str = None, permissionBot: str = None):
         self.name = name.lower()
         self.category = category
         self.description = description
         self.aliases = aliases
         self.filename = ''.join(os.path.splitext(os.path.basename(inspect.getmodule((inspect.stack()[1])[0]).__file__.removesuffix('.py'))))
+        self.permissionBot = permissionBot.lower() if permissionBot else None
+        self.permissionUser = permissionUser.lower() if permissionUser else None
         if not os.path.exists(f'command/{self.category}'):
             categories = os.listdir('command')
             return print(f'Cette catégorie n\'existe pas ! [{"|".join(categories)}]')
@@ -176,7 +181,7 @@ async def _{name}(bot, message: discord_akerno.ext.Message):
 
 if __name__ == '__main__':
     {name} = discord_akerno.Command
-    {name}.constructor({name}, "{name}", "{category}", "{description}", {aliases})
+    {name}.constructor({name}, "{name}", "{category}", "{description}", {aliases}, discord_akerno.ext.{permissionUser}, discord_akerno.ext.{permissionBot})
     {name}.execute({name}, _{name})
     {name}.Push({name})
 """
