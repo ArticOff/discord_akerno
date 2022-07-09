@@ -8,6 +8,6 @@ async def _kick(bot, message: discord_akerno.ext.Message):
 
 if __name__ == '__main__':
     kick = discord_akerno.Command
-    kick.constructor(kick, 'kick', 'moderation', 'Kick', ['expulser'])
+    kick.constructor(kick, 'kick', 'moderation', 'Kick', ['expulser'], discord_akerno.ext.Permission.expulser_des_membres, discord_akerno.ext.Permission.expulser_des_membres)
     kick.execute(kick, _kick)
     kick.Push(kick)
