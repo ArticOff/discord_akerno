@@ -12,6 +12,7 @@ PyBot
     │   └── dm.py
     ├── moderation
     │   ├── ban.py
+    │   ├── clear.py
     │   └── kick.py
     └── utility
         ├── botinfo.py
