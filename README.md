@@ -15,7 +15,7 @@ PyBot
     │   └── kick.py
     └── utility
         ├── botinfo.py
-        ├── coucou.py
         ├── help.py
+        ├── ping.py
         └── say.py
 ```
