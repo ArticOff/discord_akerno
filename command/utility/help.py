@@ -21,6 +21,6 @@ async def _help(bot, message: discord_akerno.ext.Message):
 
 if __name__ == '__main__':
     help = discord_akerno.Command
-    help.constructor(help, "help", "utility", "The help command", ['help'])
+    help.constructor(help, "help", "utility", "The help command", ['help'], None, None)
     help.execute(help, _help)
     help.Push(help)
