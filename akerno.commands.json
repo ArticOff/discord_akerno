@@ -1,26 +1,6 @@
 {
     "moderation": [
         {
-            "filename": "clear",
-            "name": "clear",
-            "category": "moderation",
-            "description": "efface des messages",
-            "aliases": [
-                "clear"
-            ],
-            "command": {
-                "arguments": [
-                    "bot",
-                    "message"
-                ],
-                "function": "_clear"
-            },
-            "permission": {
-                "bot": "manage_messages",
-                "user": "manage_messages"
-            }
-        },
-        {
             "filename": "ban",
             "name": "ban",
             "category": "moderation",
@@ -38,6 +18,26 @@
             "permission": {
                 "bot": "ban_members",
                 "user": "ban_members"
+            }
+        },
+        {
+            "filename": "clear",
+            "name": "clear",
+            "category": "moderation",
+            "description": "efface des messages",
+            "aliases": [
+                "clear"
+            ],
+            "command": {
+                "arguments": [
+                    "bot",
+                    "message"
+                ],
+                "function": "_clear"
+            },
+            "permission": {
+                "bot": "manage_message",
+                "user": "manage_messages"
             }
         },
         {
@@ -99,8 +99,8 @@
                 "function": "_botinfo"
             },
             "permission": {
-                "bot": null,
-                "user": null
+                "bot": "none",
+                "user": "none"
             }
         },
         {
@@ -119,8 +119,8 @@
                 "function": "_help"
             },
             "permission": {
-                "bot": null,
-                "user": null
+                "bot": "none",
+                "user": "none"
             }
         },
         {
@@ -141,8 +141,8 @@
                 "function": "_ping"
             },
             "permission": {
-                "bot": null,
-                "user": null
+                "bot": "none",
+                "user": "none"
             }
         },
         {
@@ -161,7 +161,7 @@
                 "function": "_say"
             },
             "permission": {
-                "bot": null,
+                "bot": "none",
                 "user": "manage_messages"
             }
         }
@@ -184,8 +184,8 @@
                 "function": "_coucou"
             },
             "permission": {
-                "bot": null,
-                "user": null
+                "bot": "none",
+                "user": "none"
             }
         },
         {
@@ -204,8 +204,8 @@
                 "function": "_dm"
             },
             "permission": {
-                "bot": null,
-                "user": null
+                "bot": "none",
+                "user": "none"
             }
         }
     ]
