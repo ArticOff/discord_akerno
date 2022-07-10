@@ -4,7 +4,7 @@ from discord.ext import commands as _commands
 
 # On définit les variables d'auteur, de version et de description
 __author__ = "Artic"
-__version__ = "1.4.0"
+__version__ = "1.4.1"
 __description__ = "En hommage à discord_akairo de discord.js, c'est un module qui fonctionne de la même façon."
 
 def get_data(path: str):
@@ -181,7 +181,7 @@ async def _{name}(bot, message: discord_akerno.ext.Message):
 
 if __name__ == '__main__':
     {name} = discord_akerno.Command
-    {name}.constructor({name}, "{name}", "{category}", "{description}", {aliases}, {f'discord_akerno.ext.{permissionUser}' if permissionUser else None}, {f'discord_akerno.ext.{permissionBot}' if permissionBot else None})
+    {name}.constructor({name}, "{name}", "{category}", "{description}", {aliases}, "{permissionUser if permissionUser else None}", "{permissionBot if permissionBot else None}")
     {name}.execute({name}, _{name})
     {name}.Push({name})
 """
@@ -213,9 +213,19 @@ class Discord_akerno(_commands.Cog):
                 file.seek(0)
             json.dump(dirs, file, indent=4, separators=(',',': '), ensure_ascii=False)
         file.close()
+        with open('akerno.commands.json', 'r+', encoding='utf-8') as file:
+            _class = get_data('akerno.commands.json')
+            for category in categories:
+                if category not in _class:
+                    _class[category] = []
+            file.seek(0)
+            json.dump(_class, file, indent=4, separators=(',',': '), ensure_ascii=False)
+        file.close()
         for category in categories:
             if category not in commands:
-                commands[category] = [] 
+                commands[category] = []
+            else:
+                pass
         file.close()
         self.bot = bot
         self.commands = commands
@@ -261,7 +271,7 @@ class Discord_akerno(_commands.Cog):
                 for cmd in self.commands[_class_]:
                     if str(str(message.content).split()[0]).removeprefix("!") in cmd["aliases"] or str(str(message.content).split()[0]).replace(self.bot.command_prefix, '_') == f'_{cmd["name"]}':
                         permissionUser = [perm[0] for perm in message.author.guild_permissions if perm[1]]
-                        if cmd["permission"]["user"] in permissionUser or cmd["permission"]["user"] is None:
+                        if cmd["permission"]["user"] in permissionUser or cmd["permission"]["user"] == "None":
                             try:
                                 return await eval("_{cmd}(self.bot, message)".format(cmd=str(cmd["name"]).removesuffix('\n')))
                             except discord.Forbidden:
