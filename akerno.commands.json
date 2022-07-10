@@ -59,6 +59,26 @@
                 "bot": "kick_members",
                 "user": "kick_members"
             }
+        },
+        {
+            "filename": "purge",
+            "name": "purge",
+            "category": "moderation",
+            "description": "efface tout les messages",
+            "aliases": [
+                "nuke"
+            ],
+            "command": {
+                "arguments": [
+                    "bot",
+                    "message"
+                ],
+                "function": "_purge"
+            },
+            "permission": {
+                "bot": "manage_messages",
+                "user": "manage_messages"
+            }
         }
     ],
     "utility": [
