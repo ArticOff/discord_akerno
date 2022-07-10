@@ -4,7 +4,7 @@ from discord.ext import commands as _commands
 
 # On définit les variables d'auteur, de version et de description
 __author__ = "Artic"
-__version__ = "1.4.1"
+__version__ = "1.4.2"
 __description__ = "En hommage à discord_akairo de discord.js, c'est un module qui fonctionne de la même façon."
 
 def get_data(path: str):
@@ -271,7 +271,7 @@ class Discord_akerno(_commands.Cog):
                 for cmd in self.commands[_class_]:
                     if str(str(message.content).split()[0]).removeprefix("!") in cmd["aliases"] or str(str(message.content).split()[0]).replace(self.bot.command_prefix, '_') == f'_{cmd["name"]}':
                         permissionUser = [perm[0] for perm in message.author.guild_permissions if perm[1]]
-                        if cmd["permission"]["user"] in permissionUser or cmd["permission"]["user"] == "None":
+                        if cmd["permission"]["user"] in permissionUser or cmd["permission"]["user"] == "none":
                             try:
                                 return await eval("_{cmd}(self.bot, message)".format(cmd=str(cmd["name"]).removesuffix('\n')))
                             except discord.Forbidden:
