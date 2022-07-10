@@ -2,7 +2,14 @@ from discord_akerno import CreateCommand, ext
 
 Permission = ext.Permission
 
-CreateCommand('clear', 'moderation', 'efface des messages', ['clear'], Permission.gerer_les_messages, Permission.gerer_les_messages)
+CreateCommand(
+    name='purgea',
+    category='moderation',
+    description='efface tout les messages',
+    aliases=['nuke'],
+    permissionUser=Permission.gerer_les_messages,
+    permissionBot=Permission.gerer_les_messages
+)
 
 """
 1. le nom de la commande (et du fichier)
