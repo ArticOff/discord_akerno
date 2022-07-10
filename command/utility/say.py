@@ -7,6 +7,6 @@ async def _say(bot, message: discord_akerno.ext.Message):
 
 if __name__ == '__main__':
     say = discord_akerno.Command
-    say.constructor(say, 'say', 'utility', 'Say', ['dire'])
+    say.constructor(say, 'say', 'utility', 'Say', ['dire'], 'manage_messages', 'None')
     say.execute(say, _say)
     say.Push(say)
