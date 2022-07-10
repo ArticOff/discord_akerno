@@ -15,6 +15,6 @@ async def _clear(bot, message: discord_akerno.ext.Message):
 
 if __name__ == '__main__':
     clear = discord_akerno.Command
-    clear.constructor(clear, "clear", "moderation", "efface des messages", ['clear'], discord_akerno.ext.Permission.gerer_les_messages, discord_akerno.ext.Permission.gerer_les_messages)
+    clear.constructor(clear, "clear", "moderation", "efface des messages", ['clear'], "manage_messages", "manage_messages")
     clear.execute(clear, _clear)
     clear.Push(clear)
