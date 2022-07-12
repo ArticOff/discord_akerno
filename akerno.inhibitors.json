@@ -2,13 +2,22 @@
     "word": [
 
     ],
-    "user": [
+    "userID": [
         
     ],
-    "guild": [
+    "userName": [
 
     ],
-    "channel": [
+    "guildID": [
 
+    ],
+    "guildName": [
+
+    ],
+    "channelID": [
+        
+    ],
+    "channelName": [
+        
     ]
 }
