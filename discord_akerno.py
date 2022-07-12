@@ -26,7 +26,7 @@ class ext:
     User = discord.User
     Member = discord.Member
     TextChannel = discord.TextChannel
-    VoiceChannel = discord.VoiceChannel
+    VoiceChannel = discord.VoiceChannel 
     StageChannel = discord.StageChannel
     StoreChannel = discord.StoreChannel
     GroupChannel = discord.GroupChannel
@@ -252,14 +252,23 @@ class Discord_akerno(_commands.Cog):
             return
         with open('akerno.inhibitors.json', 'r+', encoding='utf-8') as file:
             inhibitors = get_data('akerno.inhibitors.json')
-            if message.author.id in inhibitors["user"]:
+            if message.author.id in inhibitors["userID"]:
                 return
-            if message.guild.id in inhibitors["guild"]:
+            if message.guild.id in inhibitors["guildID"]:
                 return
-            if message.channel.id in inhibitors["channel"]:
+            if message.channel.id in inhibitors["channelID"]:
                 return
             for word in inhibitors["word"]:
                 if word in message.content.lower():
+                    return
+            for username in inhibitors["userName"]:
+                if username in message.author.name:
+                    return
+            for guildname in inhibitors["guildName"]:
+                if guildname in message.guild.name:
+                    return
+            for channelname in inhibitors["channelName"]:
+                if channelname in message.channel.name:
                     return
         file.close()
         if str(message.content).startswith(self.bot.command_prefix):
