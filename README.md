@@ -4,6 +4,8 @@
 
 The project is under development
 
+Attention, the module is only in French 
+
 ## discord_akerno makes it easy for your robots to separate commands by file and move them by folder according to their category
 
 ## Quick Examples
