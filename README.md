@@ -8,6 +8,23 @@ Attention, the module is only in French
 
 ## discord_akerno makes it easy for your robots to separate commands by file and move them by folder according to their category
 
+## Features
+
+### Dynamic commands.
+- Creating commands from the file.
+- Creating your own categories.
+### Command Handling.
+- Command aliases.
+- Client and user permission checks.
+### Blocking and monitoring messages.
+- On a word
+- For a user by ID
+- For a user by name
+- For a guild by ID
+- For a guild by name
+- For a channel by ID
+- For a channel by name
+
 ## Quick Examples
 
 ### A bot without discord_akerno
@@ -25,30 +42,11 @@ bot.remove_command('help')
 @bot.event
 async def on_ready():
     print("Bot is ready !")
-    await bot.change_presence(activity=discord.Game(name="!help"))
-
-@bot.command()
-async def ping(ctx):
-    await ctx.send(f"Pong ! {round(bot.latency * 1000)}ms")
 
 @bot.command()
 async def help(ctx):
-    embed = discord.Embed(title="Liste des commandes", description="", color=0x00ff00)
-    embed.set_author(name="Akerno", icon_url="https://cdn.discordapp.com/avatars/724098984389058688/f8f8f8f8f8f8f8f8f8f8f8f8f8f8f8f8.png")
-    embed.set_thumbnail(url="https://cdn.discordapp.com/avatars/724098984389058688/f8f8f8f8f8f8f8f8f8f8f8f8f8f8f8f8.png")
-    embed.add_field(name="!help", value="Affiche la liste des commandes", inline=False)
-    embed.add_field(name="!ping", value="Affiche le ping du bot", inline=False)
-    embed.add_field(name="!purgea", value="Efface tout les messages", inline=False)
-    embed.add_field(name="!nuke", value="Efface tout les messages", inline=False)
-    embed.add_field(name="!kick", value="Kick un utilisateur", inline=False)
+    embed = discord.Embed(title="Liste des commandes", color=0x00ff00)
     embed.add_field(name="!ban", value="Bannir un utilisateur", inline=False)
-    embed.add_field(name="!unban", value="Unban un utilisateur", inline=False)
-    embed.add_field(name="!mute", value="Mute un utilisateur", inline=False)
-    embed.add_field(name="!unmute", value="Unmute un utilisateur", inline=False)
-    embed.add_field(name="!say", value="Le bot dit quelque chose", inline=False)
-    embed.add_field(name="!avatar", value="Affiche l'avatar d'un utilisateur", inline=False)
-    embed.add_field(name="!userinfo", value="Affiche les informations d'un utilisateur", inline=False)
-    embed.add_field(name="!serverinfo", value="Affiche les informations du serveur", inline=False)
     await ctx.send(embed=embed)
 
 @bot.command()
