@@ -4,7 +4,7 @@
 
 The project is under development
 
-Attention, the module is only in French 
+Attention, the framework is only in French 
 
 ## discord_akerno makes it easy for your robots to separate commands by file and move them by folder according to their category
 
@@ -109,8 +109,8 @@ MySuperBot
 2. [Download all files](https://github.com/ArticOff/discord_akerno/archive/refs/heads/main.zip)
 3. Put them in a common folder
 4. Put your bot
-5. Don't forget to import the discord_akerno module
-6. Put the line to connect the bot to the module `AkernoClient(bot)`
+5. Don't forget to import the discord_akerno framework
+6. Put the line to connect the bot to the framework `AkernoClient(bot)`
 7. You're done !
 
 ## How to create a command ?
