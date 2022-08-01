@@ -18,12 +18,15 @@ Attention, the framework is only in French
 - Client and user permission checks.
 ### Blocking and monitoring messages.
 - On a word
-- For a user by ID
-- For a user by name
-- For a guild by ID
-- For a guild by name
-- For a channel by ID
-- For a channel by name
+- User
+    - For a user by ID
+    - For a user by name
+- Guild
+    - For a guild by ID
+    - For a guild by name
+- Channel
+    - For a channel by ID
+    - For a channel by name
 
 ## Quick Examples
 
