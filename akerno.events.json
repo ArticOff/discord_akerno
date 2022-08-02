@@ -1,0 +1,17 @@
+{
+    "client": [
+        {
+            "filename": "on_ready",
+            "category": "client",
+            "name": "on_ready",
+            "event": "ready",
+            "function": {
+                "arguments": [
+                    "bot"
+                ],
+                "name": "_on_ready"
+            }
+        }
+    ],
+    "command": []
+}
