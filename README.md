@@ -111,7 +111,6 @@ MySuperBot
     │   └── on_ready.py
     └── command
         └── commandNotFound.py
-
 ```
 
 ## How to install it ?
