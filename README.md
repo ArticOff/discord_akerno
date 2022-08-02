@@ -70,7 +70,7 @@ from discord_akerno import AkernoClient
 prefix = "!"
 bot = commands.Bot(command_prefix=prefix)
 bot.remove_command('help')
-AkernoClient(bot)
+AkernoClient(bot, 'event')
 
 @bot.event
 async def on_ready():
