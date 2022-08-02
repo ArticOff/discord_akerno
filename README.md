@@ -13,9 +13,11 @@ Attention, the framework is only in French
 ### Dynamic commands.
 - Creating commands from the file.
 - Creating your own categories.
-### Command Handling.
+### Command handling.
 - Command aliases.
 - Client and user permission checks.
+### Event handling.
+- Client and user events.
 ### Blocking and monitoring messages.
 - On a word
 - User
@@ -90,20 +92,26 @@ MySuperBot
 ├── bot.py
 ├── discord_akerno.create.py
 ├── discord_akerno.py
-└── command
-    ├── fun
-    │   ├── coucou.py
-    │   └── dm.py
-    ├── moderation
-    │   ├── ban.py
-    │   ├── clear.py
-    │   ├── kick.py
-    │   └── purge.py
-    └── utility
-        ├── botinfo.py
-        ├── help.py
-        ├── ping.py
-        └── say.py
+├── command
+│   ├── fun
+│   │   ├── coucou.py
+│   │   └── dm.py
+│   ├── moderation
+│   │   ├── ban.py
+│   │   ├── clear.py
+│   │   ├── kick.py
+│   │   └── purge.py
+│   └── utility
+│       ├── botinfo.py
+│       ├── help.py
+│       ├── ping.py
+│       └── say.py
+└── event
+    ├── client
+    │   └── on_ready.py
+    └── command
+        └── commandNotFound.py
+
 ```
 
 ## How to install it ?
