@@ -13,5 +13,20 @@
             }
         }
     ],
-    "command": []
+    "command": [
+        {
+            "filename": "commandNotFound",
+            "category": "command",
+            "name": "commandNotFound",
+            "event": "commandNotFound",
+            "function": {
+                "arguments": [
+                    "bot",
+                    "ctx",
+                    "error"
+                ],
+                "name": "_commandNotFound"
+            }
+        }
+    ]
 }
