@@ -74,11 +74,6 @@ bot = commands.Bot(command_prefix=prefix)
 bot.remove_command('help')
 AkernoClient(bot, 'event')
 
-@bot.event
-async def on_ready():
-    print("Bot is ready !")
-    await bot.change_presence(activity=discord.Game(name="!help"))
-
 bot.run('token')
 ```
 
