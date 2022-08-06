@@ -125,7 +125,12 @@ MySuperBot
 
 ## How to create a command ?
 
-1. Open the file [discord_akerno.create.py](https://github.com/Help-Python-Group-FR/discord_akerno/blob/main/discord_akerno.create.py)
+1. Open the file [discord_akerno.create.command.py](https://github.com/ArticOff/discord_akerno/blob/main/discord_akerno.create.command.py)
+2. Fill in the options
+3. Then run the file
+
+#  How to create an event ?
+1. Open the file [discord_akerno.create.event.py](https://github.com/ArticOff/discord_akerno/blob/main/discord_akerno.create.event.py)
 2. Fill in the options
 3. Then run the file
 
